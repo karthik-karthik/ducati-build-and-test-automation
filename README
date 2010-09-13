@@ -1,0 +1,25 @@
+===============================================
+README for ducati-build-and-test-automation
+
+Author: Karthik Ramanan
+Email : karthik.ramanan@ti.com
+===============================================
+
+INSTALL:
+
+If you are reading this then you have already 
+done a git clone of the project.
+
+You should have the following files in the git
+repository
+
+1. daily-build.pl
+2. dailybuild.cfg
+3. dailybuild-testconfig.cfg
+
+The above three files are required for you to 
+proceed further.
+
+GETTING STARTED:
+
+

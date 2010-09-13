@@ -5,21 +5,90 @@ Author: Karthik Ramanan
 Email : karthik.ramanan@ti.com
 ===============================================
 
-INSTALL:
+1. INSTALL:
 
-If you are reading this then you have already 
-done a git clone of the project.
+The first step to getting the sources is to perform a git clone:
 
-You should have the following files in the git
-repository
+git clone git://github.com/karthik-karthik/ducati-build-and-test-automation.git
+
+You should see the following files within the ducati-build-and-test-automation folder.
 
 1. daily-build.pl
 2. dailybuild.cfg
 3. dailybuild-testconfig.cfg
+4. README
 
-The above three files are required for you to 
-proceed further.
+The first three files are required for you to proceed further.
+The README file contains a detailed list of features that are supported.
 
-GETTING STARTED:
+Refer to the next section GETTING STARTED to get a quick insight on how the Build and Test Automation Framework can be configured and working
 
+2. GETTING STARTED:
+
+a. Understanding the file - dailybuild.cfg
+
+The dailybuild.cfg file allows the user to control and configure the various features that the Build and Test Automation provides. The user can setup this file to suit to their own operating environment.
+
+The file follows a very simple key value pair concept and the keys and values are seperated by a " = " sign. The list of key-value pairs supported is hardcoded in the script and the presence of any extra key value pair will cause the script to terminate execution. So it is important that you go through the support keys before you add them into the dailybuild.cfg file.
+
+Below is a brief explanation of each of the supported fields:
+
+1. ENABLE-BUILDS
+
+When the administrator of Ducati wants to run Daily Automated builds, the following key must be set to YES. When this field is turned on, it switches on the Daily Build mode to build the Ducati sources.
+
+	ENABLE-BUILDS = YES
+
+2. DUCATI-LABEL 
+
+The Automation framework will need to know the base config spec on which the current integration cycle is based on. This field will need to have the label of the last known release config spec corresponding to the Ducati sources. This will be a single clearcase label that goes out of the Ducati Team.
+
+The Automation framework will use this value as the base for creating all the clearcase views corresponding to the Ducati sources
+
+	DUCATI-LABEL = TI-MM-DUCATI_RLS.01.17.00.00
+
+3.  INTEGRATION-BRANCH
+
+This field is used to define the integration branch name that is being used in the current integration cycle. The Automation framework will assume that all the content is being merged into the branch specified and this branch will be picked up for daily builds and all other reports that get generated.
+
+	INTEGRATION-BRANCH = taskint_ducati_01.18.00.00
+
+LABEL-FORMAT = ACT_DUCATI-DAILYBUILD
+
+
+
+DAILY-BUILD-VIEW-NAME
+
+When the ENABLE-BUILDS option is enabled, the Automation framework first creates a clearcase view 
+
+
+DAILY-BUILD-VIEW-NAME = db-v
+DAILY-BUILD-LABELED-VIEW-NAME = db-lv
+OMTB-BUILD-VIEW-NAME = omtbscript-view
+
+OMTB-LABEL = REL_OMTB_DUCATI_1.17_LINUX_24.9-REL2
+FILESYSTEM-PATH = /proj/ducati/karthik/dailybuild-es2.0
+RESULT-LOCATION = E:\DailyBuildReport
+INSTALL-DIR = C:\Program Files\Texas Instruments
+BUILD-DEPENDENCY-DIR = E:\Build_requirements_L249
+XDC-VERSION = 3_20_01_51
+BIOS-VERSION = 6_30_02_35_eng
+CE-VERSION = 3_20_00_08_eng
+FC-VERSION = 3_20_00_12_eng
+OSAL-VERSION = 1_20_00_06_eng
+XDAIS-VERSION = 7_20_00_01_eng
+BRIDGE-PATH = E:\Build_requirements_L249\sl_bios_ipc\packages
+CGTOOLS-VERSION = 4.6.1
+IP-ADDRESS = 172.24.190.16
+ENABLE-TESTS = YES
+TEST-MONITOR-INTERVAL = 100
+TEST-MONITOR-MODE = AUTO
+OMTB-BINARY-NAME = omtb_l249_rel1.out
+KERNEL-IMAGE-NAME = uImage-ES2.0-L249-p4-ipupm
+TEST-EXECUTION-MODE = exit-every-run
+COM-PORT = 6
+RELAY-SWITCH-PATH = C:\Documents and Settings\a0393906\Desktop\RemoteSwitch\RemoteSwitch\lpt
+FORCE-COPY-OMSFILE = NO
+INCLUDE-COMMON-DECODER-TESTS = YES
+UPDATE-CQ-RESULTS = NO
 
